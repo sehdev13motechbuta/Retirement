@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retirement Invitation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  overflow:hidden;
+  background:linear-gradient(135deg,#7c3aed,#ec4899,#f59e0b);
+  background-size:400% 400%;
+  animation:bgMove 10s infinite alternate;
+}
+
+@keyframes bgMove{
+  0%{background-position:left}
+  100%{background-position:right}
+}
+
+.card{
+  width:380px;
+  background:rgba(255,255,255,0.95);
+  border-radius:25px;
+  padding:35px;
+  text-align:center;
+  box-shadow:0 20px 40px rgba(0,0,0,0.3);
+  animation:cardEnter .7s ease;
+}
+
+@keyframes cardEnter{
+  from{opacity:0; transform:scale(.7) rotate(-3deg)}
+  to{opacity:1; transform:scale(1) rotate(0)}
+}
+
+h1{
+  margin-bottom:10px;
+  font-weight:600;
+}
+
+p{
+  font-size:17px;
+  line-height:1.5;
+  margin-bottom:25px;
+}
+
+button{
+  padding:12px 28px;
+  border:none;
+  border-radius:12px;
+  background:linear-gradient(45deg,#7c3aed,#ec4899);
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+  box-shadow:0 6px 15px rgba(0,0,0,.2);
+  transition:.3s;
+}
+
+button:hover{
+  transform:scale(1.08);
+}
+
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  pointer-events:none;
+}
+
+</style>
+</head>
+<body>
+
+<canvas id="confetti"></canvas>
+
+<audio id="music" src="https://cdn.pixabay.com/audio/2022/03/15/audio_4c4d1e3c4f.mp3"></audio>
+
+<div class="card">
+  <h1 id="title">🎉 Retirement Celebration</h1>
+  <p id="text">You are warmly invited to celebrate the retirement of <b>Mr. Ashok Verma</b>.</p>
+  <button onclick="nextPage()">Open Invitation</button>
+</div>
+
+<script>
+let page=0
+
+const pages=[
+{
+ title:"🎉 Retirement Celebration",
+ text:"You are warmly invited to celebrate the retirement of Mr. Ashok Verma."
+},
+{
+ title:"👨‍👩‍👧‍👦 Hosted By",
+ text:"Family: Sangeeta, Sehdev, Chetna, Saachi"
+},
+{
+ title:"📅 Event Details",
+ text:"Date: 02 April 2026  |  Time: 8:00 PM"
+},
+{
+ title:"📍 Venue",
+ text:"Chandigarh  -  Sector 44"
+},
+{
+ title:"✨ Celebration Awaits",
+ text:"Join us to celebrate years of dedication and a beautiful new journey!"
+}
+]
+
+function nextPage(){
+
+ const music=document.getElementById("music")
+ music.play()
+
+ launchConfetti()
+
+ page++
+
+ if(page>=pages.length){
+  page=0
+ }
+
+ document.getElementById("title").innerText=pages[page].title
+ document.getElementById("text").innerText=pages[page].text
+}
+
+/* Confetti Animation */
+
+const canvas=document.getElementById("confetti")
+const ctx=canvas.getContext("2d")
+
+canvas.width=window.innerWidth
+canvas.height=window.innerHeight
+
+let pieces=[]
+
+function launchConfetti(){
+ pieces=[]
+ for(let i=0;i<150;i++){
+  pieces.push({
+   x:Math.random()*canvas.width,
+   y:-20,
+   size:6+Math.random()*6,
+   speed:2+Math.random()*4,
+   color:`hsl(${Math.random()*360},100%,50%)`
+  })
+ }
+}
+
+function update(){
+ ctx.clearRect(0,0,canvas.width,canvas.height)
+
+ pieces.forEach(p=>{
+  p.y+=p.speed
+  ctx.fillStyle=p.color
+  ctx.fillRect(p.x,p.y,p.size,p.size)
+ })
+
+ requestAnimationFrame(update)
+}
+
+update()
+
+</script>
+
+</body>
+</html>
