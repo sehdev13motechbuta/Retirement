@@ -69,6 +69,28 @@ button:hover{
   transform:scale(1.08);
 }
 
+/* Dancing people */
+.dancers{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  font-size:40px;
+  margin-bottom:15px;
+}
+
+.dancer{
+  animation:dance 1s infinite alternate ease-in-out;
+}
+
+.dancer:nth-child(2){animation-delay:.2s}
+.dancer:nth-child(3){animation-delay:.4s}
+.dancer:nth-child(4){animation-delay:.6s}
+
+@keyframes dance{
+  from{transform:translateY(0) rotate(-10deg)}
+  to{transform:translateY(-15px) rotate(10deg)}
+}
+
 canvas{
   position:fixed;
   top:0;
@@ -82,12 +104,23 @@ canvas{
 
 <canvas id="confetti"></canvas>
 
-<audio id="music" src="https://cdn.pixabay.com/audio/2022/03/15/audio_4c4d1e3c4f.mp3"></audio>
+<audio id="music" src="https://cdn.pixabay.com/audio/2023/03/21/audio_5f9c5b8f3c.mp3"></audio>
 
 <div class="card">
-  <h1 id="title">🎉 Retirement Celebration</h1>
-  <p id="text">You are warmly invited to celebrate the retirement of <b>Mr. Ashok Verma</b>.</p>
-  <button onclick="nextPage()">Open Invitation</button>
+
+<div class="dancers">
+<span class="dancer">🕺</span>
+<span class="dancer">💃</span>
+<span class="dancer">🕺</span>
+<span class="dancer">💃</span>
+</div>
+
+<h1 id="title">🎉 Retirement Celebration</h1>
+
+<p id="text">You are warmly invited to celebrate the retirement of <b>Mr. Ashok Verma</b>.</p>
+
+<button onclick="nextPage()">Open Invitation</button>
+
 </div>
 
 <script>
@@ -108,11 +141,11 @@ const pages=[
 },
 {
  title:"📍 Venue",
- text:"Chandigarh  -  Sector 44"
+ text:"Chandigarh - Sector 44"
 },
 {
- title:"✨ Celebration Awaits",
- text:"Join us to celebrate years of dedication and a beautiful new journey!"
+ title:"🎊 Celebration Time",
+ text:"Music, Dance and Celebration as we honor Mr. Ashok Verma's wonderful journey!"
 }
 ]
 
@@ -133,7 +166,7 @@ function nextPage(){
  document.getElementById("text").innerText=pages[page].text
 }
 
-/* Confetti Animation */
+/* Confetti */
 
 const canvas=document.getElementById("confetti")
 const ctx=canvas.getContext("2d")
@@ -145,7 +178,7 @@ let pieces=[]
 
 function launchConfetti(){
  pieces=[]
- for(let i=0;i<150;i++){
+ for(let i=0;i<160;i++){
   pieces.push({
    x:Math.random()*canvas.width,
    y:-20,
