@@ -4,212 +4,291 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Golden Retirement Invitation</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<!-- Elegant Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-body{
-  margin:0;
-  font-family:'Poppins',sans-serif;
-  height:100vh;
-  overflow:hidden;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:radial-gradient(circle at top,#3b2f00,#000);
-  color:#fff;
+:root {
+  --gold: #d4af37;
+  --light-gold: #f7e27d;
+  --dark-gold: #996515;
 }
 
-.card{
-  width:90vw;
-  max-width:380px;
-  background:linear-gradient(145deg,#d4af37,#f7e27d,#c9a227);
-  border-radius:25px;
-  padding:20px;
-  text-align:center;
-  color:#3b2f00;
-  box-shadow:0 20px 40px rgba(0,0,0,0.6);
-  position:relative;
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+  color: #fff;
 }
 
-h1{margin-bottom:10px;font-size:20px}
-p{font-size:15px;margin-bottom:12px}
-
-button{
-  padding:10px 16px;
-  border:none;
-  border-radius:10px;
-  background:#000;
-  color:#fff;
-  cursor:pointer;
-  margin:5px;
-  font-size:14px;
+/* Background Bokeh Effect */
+.bg-dots {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(var(--gold) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.1;
+  z-index: 0;
 }
 
-.photo-box{
-  position:relative;
-  display:inline-block;
+.card {
+  width: 90vw;
+  max-width: 400px;
+  background: linear-gradient(145deg, #111, #222);
+  border: 2px solid var(--gold);
+  border-radius: 30px;
+  padding: 40px 20px;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+  overflow: hidden;
 }
 
-.photo{
-  width:90px;
-  height:90px;
-  border-radius:50%;
-  object-fit:cover;
-  border:3px solid #fff;
+/* Shimmering Gold Border Animation */
+.card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(transparent, var(--gold), transparent 30%);
+  animation: rotate 6s linear infinite;
+  z-index: -1;
 }
 
-.name-tag{
-  position:absolute;
-  bottom:-8px;
-  left:50%;
-  transform:translateX(-50%);
-  background:#000;
-  color:#fff;
-  padding:2px 8px;
-  border-radius:8px;
-  font-size:11px;
+.card-inner {
+  background: #0a0a0a;
+  padding: 30px 20px;
+  border-radius: 25px;
 }
 
-.disco{
-  width:35px;
-  height:35px;
-  background:silver;
-  border-radius:50%;
-  position:absolute;
-  top:-18px;
-  left:50%;
-  transform:translateX(-50%);
-  box-shadow:0 0 15px #fff,0 0 30px #fff;
-  animation:spin 3s linear infinite;
+@keyframes rotate {
+  100% { transform: rotate(360deg); }
 }
 
-@keyframes spin{
-  from{transform:translateX(-50%) rotate(0deg)}
-  to{transform:translateX(-50%) rotate(360deg)}
+h1 {
+  font-family: 'Playfair Display', serif;
+  color: var(--gold);
+  font-size: 26px;
+  margin-top: 20px;
+  letter-spacing: 1px;
 }
 
-.lights{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  pointer-events:none;
-  background:linear-gradient(120deg,transparent,rgba(255,0,200,.3),transparent);
-  animation:lights 4s linear infinite;
+p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #e0e0e0;
+  min-height: 60px;
+  transition: opacity 0.5s;
 }
 
-@keyframes lights{
-  0%{transform:translateX(-100%)}
-  100%{transform:translateX(100%)}
+/* Animated Content Transition */
+.fade-out { opacity: 0; transform: translateY(10px); }
+.fade-in { opacity: 1; transform: translateY(0); transition: 0.5s; }
+
+.photo-box {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 10px;
 }
 
-.dance{
-  font-size:40px;
-  animation:dance 1s infinite alternate ease-in-out;
+.photo {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--gold);
+  box-shadow: 0 0 15px var(--gold);
 }
 
-@keyframes dance{
-  from{transform:translateY(0) rotate(-10deg)}
-  to{transform:translateY(-12px) rotate(10deg)}
+.btn-container {
+  margin-top: 20px;
 }
 
-canvas{
-  position:fixed;
-  top:0;
-  left:0;
-  pointer-events:none;
+button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(to right, var(--dark-gold), var(--gold), var(--dark-gold));
+  color: #000;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 5px;
+  font-size: 14px;
+  text-transform: uppercase;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
 
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px var(--gold);
+}
+
+.location-btn {
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+}
+
+.dance-emoji {
+  font-size: 40px;
+  display: block;
+  margin-top: 10px;
+  animation: bounce 1s infinite alternate;
+}
+
+@keyframes bounce {
+  from { transform: translateY(0); }
+  to { transform: translateY(-10px); }
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 5;
+}
 </style>
 </head>
 <body>
 
-<div class="lights"></div>
+<div class="bg-dots"></div>
 <canvas id="fireworks"></canvas>
 
-<audio id="music" src="https://cdn.pixabay.com/audio/2022/10/25/audio_946b9c3a4a.mp3"></audio>
+<audio id="music" src="https://cdn.pixabay.com/audio/2022/10/25/audio_946b9c3a4a.mp3" loop></audio>
 
 <div class="card">
-  <div class="disco"></div>
+  <div class="card-inner">
+    <div class="photo-box">
+      <img class="photo" src="https://i.imgur.com/4Z7AzH0.png" alt="Mr Ashok Verma">
+      <span class="dance-emoji">🕺✨</span>
+    </div>
 
-  <div class="photo-box">
-    <img class="photo" src="https://i.imgur.com/4Z7AzH0.png" alt="Mr Ashok Verma">
-    
-  <div class="dance">👨‍🦳🕺</div>
+    <div id="content-area">
+      <h1 id="title">Golden Retirement</h1>
+      <p id="text">Join us in celebrating the wonderful career of Mr. Ashok Verma</p>
+    </div>
+
+    <div class="btn-container">
+      <button onclick="nextPage()">Next Detail ✨</button>
+      <br>
+      <a href="https://maps.app.goo.gl/w1xFt3GhAfGgwEnv6" target="_blank">
+        <button class="location-btn">📍 View Location</button>
+      </a>
+    </div>
   </div>
-
-
-  <h1 id="title">Golden Retirement Celebration</h1>
-  <p id="text">You are invited to celebrate the retirement of Mr. Ashok Verma</p>
-
-  <button onclick="nextPage()">Next</button>
-
-  <br><br>
-
-  <a href="https://maps.app.goo.gl/w1xFt3GhAfGgwEnv6" target="_blank">
-    <button>🗺 Location</button>
-  </a>
 </div>
 
 <script>
-let page=0;
-
-const pages=[
-{title:"🏆 Golden Retirement",text:"Join us in celebrating the wonderful career of Mr. Ashok Verma"},
-{title:"👨‍👩‍👧‍👦 Hosted By",text:"Family: Sangeeta, Sehdev, Chetna, Saachi"},
-{title:"📅 Event Details",text:"02 MAY 2026 | 7:00 PM"},
-{title:"📍 Venue",text:"ABS Banquet Hall - SCO 958 Sector 70"},
-{title:"🎉 Celebration",text:"Music, Dance and Celebration!"}
+let page = 0;
+const pages = [
+  {title: "🏆 Golden Retirement", text: "Join us in celebrating the wonderful career of Mr. Ashok Verma"},
+  {title: "👨‍👩‍👧‍👦 Hosted By", text: "Family: Sangeeta, Sehdev, Chetna, Saachi"},
+  {title: "📅 Date & Time", text: "Saturday, 02 MAY 2026 <br> 7:00 PM Onwards"},
+  {title: "📍 The Venue", text: "ABS Banquet Hall<br>SCO 958 Sector 70, Mohali"},
+  {title: "🎉 Join the Party", text: "An evening of Music, Dinner, and Memories!"}
 ];
 
-function nextPage(){
- document.getElementById("music").play();
- launchFireworks();
+function nextPage() {
+  // Play music on first click
+  const music = document.getElementById("music");
+  if(music.paused) music.play();
 
- page++;
- if(page>=pages.length){page=0;}
+  launchFireworks();
 
- document.getElementById("title").innerText=pages[page].title;
- document.getElementById("text").innerText=pages[page].text;
+  // Animation effect
+  const container = document.getElementById("content-area");
+  container.classList.add("fade-out");
+
+  setTimeout(() => {
+    page = (page + 1) % pages.length;
+    document.getElementById("title").innerHTML = pages[page].title;
+    document.getElementById("text").innerHTML = pages[page].text;
+    container.classList.remove("fade-out");
+    container.classList.add("fade-in");
+  }, 400);
 }
 
-const canvas=document.getElementById("fireworks");
-const ctx=canvas.getContext("2d");
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
+// Better Fireworks Logic
+const canvas = document.getElementById("fireworks");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-let particles=[];
+let particles = [];
 
-function launchFireworks(){
- for(let i=0;i<60;i++){
-  particles.push({
-   x:canvas.width/2,
-   y:canvas.height/2,
-   angle:Math.random()*Math.PI*2,
-   speed:2+Math.random()*3,
-   radius:2+Math.random()*2
+class Particle {
+  constructor(x, y, color) {
+    this.x = x;
+    this.y = y;
+    this.color = color;
+    this.velocity = {
+      x: (Math.random() - 0.5) * 8,
+      y: (Math.random() - 0.5) * 8
+    };
+    this.alpha = 1;
+    this.friction = 0.95;
+  }
+
+  draw() {
+    ctx.globalAlpha = this.alpha;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
+    ctx.fillStyle = this.color;
+    ctx.fill();
+  }
+
+  update() {
+    this.velocity.x *= this.friction;
+    this.velocity.y *= this.friction;
+    this.x += this.velocity.x;
+    this.y += this.velocity.y;
+    this.alpha -= 0.02;
+  }
+}
+
+function launchFireworks() {
+  const x = Math.random() * canvas.width;
+  const y = Math.random() * (canvas.height / 2);
+  const color = `hsl(${Math.random() * 360}, 50%, 50%)`;
+  
+  for (let i = 0; i < 40; i++) {
+    particles.push(new Particle(x, y, color));
+  }
+}
+
+function animate() {
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  
+  particles.forEach((p, index) => {
+    if (p.alpha > 0) {
+      p.update();
+      p.draw();
+    } else {
+      particles.splice(index, 1);
+    }
   });
- }
+  requestAnimationFrame(animate);
 }
 
-function update(){
- ctx.clearRect(0,0,canvas.width,canvas.height);
+animate();
 
- particles.forEach(p=>{
-  p.x+=Math.cos(p.angle)*p.speed;
-  p.y+=Math.sin(p.angle)*p.speed;
-
-  ctx.beginPath();
-  ctx.arc(p.x,p.y,p.radius,0,Math.PI*2);
-  ctx.fillStyle=`hsl(${Math.random()*360},100%,50%)`;
-  ctx.fill();
- });
-
- requestAnimationFrame(update);
-}
-
-update();
+// Handle window resize
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
 </script>
 
 </body>
