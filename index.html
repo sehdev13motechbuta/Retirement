@@ -1,94 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Retirement Invitation</title>
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Golden Retirement Invitation</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-
 body{
   margin:0;
   font-family:'Poppins',sans-serif;
+  height:100vh;
+  overflow:hidden;
   display:flex;
   justify-content:center;
   align-items:center;
-  height:100vh;
-  overflow:hidden;
-  background:linear-gradient(135deg,#7c3aed,#ec4899,#f59e0b);
-  background-size:400% 400%;
-  animation:bgMove 10s infinite alternate;
-}
-
-@keyframes bgMove{
-  0%{background-position:left}
-  100%{background-position:right}
+  background:radial-gradient(circle at top,#3b2f00,#000);
+  color:#fff;
 }
 
 .card{
-  width:380px;
-  background:rgba(255,255,255,0.95);
+  width:90vw;
+  max-width:380px;
+  background:linear-gradient(145deg,#d4af37,#f7e27d,#c9a227);
   border-radius:25px;
-  padding:35px;
+  padding:20px;
   text-align:center;
-  box-shadow:0 20px 40px rgba(0,0,0,0.3);
-  animation:cardEnter .7s ease;
+  color:#3b2f00;
+  box-shadow:0 20px 40px rgba(0,0,0,0.6);
+  position:relative;
 }
 
-@keyframes cardEnter{
-  from{opacity:0; transform:scale(.7) rotate(-3deg)}
-  to{opacity:1; transform:scale(1) rotate(0)}
-}
-
-h1{
-  margin-bottom:10px;
-  font-weight:600;
-}
-
-p{
-  font-size:17px;
-  line-height:1.5;
-  margin-bottom:25px;
-}
+h1{margin-bottom:10px;font-size:20px}
+p{font-size:15px;margin-bottom:12px}
 
 button{
-  padding:12px 28px;
+  padding:10px 16px;
   border:none;
-  border-radius:12px;
-  background:linear-gradient(45deg,#7c3aed,#ec4899);
-  color:white;
-  font-size:16px;
+  border-radius:10px;
+  background:#000;
+  color:#fff;
   cursor:pointer;
-  box-shadow:0 6px 15px rgba(0,0,0,.2);
-  transition:.3s;
+  margin:5px;
+  font-size:14px;
 }
 
-button:hover{
-  transform:scale(1.08);
+.photo-box{
+  position:relative;
+  display:inline-block;
 }
 
-/* Dancing people */
-.dancers{
-  display:flex;
-  justify-content:center;
-  gap:15px;
+.photo{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  object-fit:cover;
+  border:3px solid #fff;
+}
+
+.name-tag{
+  position:absolute;
+  bottom:-8px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#000;
+  color:#fff;
+  padding:2px 8px;
+  border-radius:8px;
+  font-size:11px;
+}
+
+.disco{
+  width:35px;
+  height:35px;
+  background:silver;
+  border-radius:50%;
+  position:absolute;
+  top:-18px;
+  left:50%;
+  transform:translateX(-50%);
+  box-shadow:0 0 15px #fff,0 0 30px #fff;
+  animation:spin 3s linear infinite;
+}
+
+@keyframes spin{
+  from{transform:translateX(-50%) rotate(0deg)}
+  to{transform:translateX(-50%) rotate(360deg)}
+}
+
+.lights{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  background:linear-gradient(120deg,transparent,rgba(255,0,200,.3),transparent);
+  animation:lights 4s linear infinite;
+}
+
+@keyframes lights{
+  0%{transform:translateX(-100%)}
+  100%{transform:translateX(100%)}
+}
+
+.dance{
   font-size:40px;
-  margin-bottom:15px;
-}
-
-.dancer{
   animation:dance 1s infinite alternate ease-in-out;
 }
 
-.dancer:nth-child(2){animation-delay:.2s}
-.dancer:nth-child(3){animation-delay:.4s}
-.dancer:nth-child(4){animation-delay:.6s}
-
 @keyframes dance{
   from{transform:translateY(0) rotate(-10deg)}
-  to{transform:translateY(-15px) rotate(10deg)}
+  to{transform:translateY(-12px) rotate(10deg)}
 }
 
 canvas{
@@ -102,107 +125,91 @@ canvas{
 </head>
 <body>
 
-<canvas id="confetti"></canvas>
+<div class="lights"></div>
+<canvas id="fireworks"></canvas>
 
-<audio id="music" src="https://cdn.pixabay.com/audio/2023/03/21/audio_5f9c5b8f3c.mp3"></audio>
+<audio id="music" src="https://cdn.pixabay.com/audio/2022/10/25/audio_946b9c3a4a.mp3"></audio>
 
 <div class="card">
+  <div class="disco"></div>
 
-<div class="dancers">
-<span class="dancer">🕺</span>
-<span class="dancer">💃</span>
-<span class="dancer">🕺</span>
-<span class="dancer">💃</span>
-</div>
+  <div class="photo-box">
+    <img class="photo" src="https://i.imgur.com/4Z7AzH0.png" alt="Mr Ashok Verma">
+    
+  <div class="dance">👨‍🦳🕺</div>
+  </div>
 
-<h1 id="title">🎉 Retirement Celebration</h1>
 
-<p id="text">You are warmly invited to celebrate the retirement of <b>Mr. Ashok Verma</b>.</p>
+  <h1 id="title">Golden Retirement Celebration</h1>
+  <p id="text">You are invited to celebrate the retirement of Mr. Ashok Verma</p>
 
-<button onclick="nextPage()">Open Invitation</button>
+  <button onclick="nextPage()">Next</button>
 
+  <br><br>
+
+  <a href="https://maps.app.goo.gl/w1xFt3GhAfGgwEnv6" target="_blank">
+    <button>🗺 Location</button>
+  </a>
 </div>
 
 <script>
-let page=0
+let page=0;
 
 const pages=[
-{
- title:"🎉 Retirement Celebration",
- text:"You are warmly invited to celebrate the retirement of Mr. Ashok Verma."
-},
-{
- title:"👨‍👩‍👧‍👦 Hosted By",
- text:"Family: Sangeeta, Sehdev, Chetna, Saachi"
-},
-{
- title:"📅 Event Details",
- text:"Date: 02 April 2026  |  Time: 8:00 PM"
-},
-{
- title:"📍 Venue",
- text:"Chandigarh - Sector 44"
-},
-{
- title:"🎊 Celebration Time",
- text:"Music, Dance and Celebration as we honor Mr. Ashok Verma's wonderful journey!"
-}
-]
+{title:"🏆 Golden Retirement",text:"Join us in celebrating the wonderful career of Mr. Ashok Verma"},
+{title:"👨‍👩‍👧‍👦 Hosted By",text:"Family: Sangeeta, Sehdev, Chetna, Saachi"},
+{title:"📅 Event Details",text:"02 MAY 2026 | 7:00 PM"},
+{title:"📍 Venue",text:"ABS Banquet Hall - SCO 958 Sector 70"},
+{title:"🎉 Celebration",text:"Music, Dance and Celebration!"}
+];
 
 function nextPage(){
+ document.getElementById("music").play();
+ launchFireworks();
 
- const music=document.getElementById("music")
- music.play()
+ page++;
+ if(page>=pages.length){page=0;}
 
- launchConfetti()
-
- page++
-
- if(page>=pages.length){
-  page=0
- }
-
- document.getElementById("title").innerText=pages[page].title
- document.getElementById("text").innerText=pages[page].text
+ document.getElementById("title").innerText=pages[page].title;
+ document.getElementById("text").innerText=pages[page].text;
 }
 
-/* Confetti */
+const canvas=document.getElementById("fireworks");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
 
-const canvas=document.getElementById("confetti")
-const ctx=canvas.getContext("2d")
+let particles=[];
 
-canvas.width=window.innerWidth
-canvas.height=window.innerHeight
-
-let pieces=[]
-
-function launchConfetti(){
- pieces=[]
- for(let i=0;i<160;i++){
-  pieces.push({
-   x:Math.random()*canvas.width,
-   y:-20,
-   size:6+Math.random()*6,
-   speed:2+Math.random()*4,
-   color:`hsl(${Math.random()*360},100%,50%)`
-  })
+function launchFireworks(){
+ for(let i=0;i<60;i++){
+  particles.push({
+   x:canvas.width/2,
+   y:canvas.height/2,
+   angle:Math.random()*Math.PI*2,
+   speed:2+Math.random()*3,
+   radius:2+Math.random()*2
+  });
  }
 }
 
 function update(){
- ctx.clearRect(0,0,canvas.width,canvas.height)
+ ctx.clearRect(0,0,canvas.width,canvas.height);
 
- pieces.forEach(p=>{
-  p.y+=p.speed
-  ctx.fillStyle=p.color
-  ctx.fillRect(p.x,p.y,p.size,p.size)
- })
+ particles.forEach(p=>{
+  p.x+=Math.cos(p.angle)*p.speed;
+  p.y+=Math.sin(p.angle)*p.speed;
 
- requestAnimationFrame(update)
+  ctx.beginPath();
+  ctx.arc(p.x,p.y,p.radius,0,Math.PI*2);
+  ctx.fillStyle=`hsl(${Math.random()*360},100%,50%)`;
+  ctx.fill();
+ });
+
+ requestAnimationFrame(update);
 }
 
-update()
-
+update();
 </script>
 
 </body>
