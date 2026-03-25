@@ -39,12 +39,11 @@ body, html {
   position: relative;
   width: 92%;
   max-width: 420px;
-  /* Adjusts height based on screen size but keeps minimums */
   min-height: 600px;
   max-height: 95vh;
   background-color: var(--bg-card);
   box-shadow: var(--shadow);
-  overflow-y: auto; /* Allows scrolling if content is long on tiny screens */
+  overflow-y: auto;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
@@ -53,10 +52,9 @@ body, html {
   text-align: center;
   padding: 2.5rem 1.5rem;
   border-radius: 12px;
-  transition: transform 0.3s ease;
 }
 
-/* Custom Scrollbar for the card */
+/* Custom Scrollbar */
 .card::-webkit-scrollbar { width: 4px; }
 .card::-webkit-scrollbar-thumb { background: var(--accent-gold); border-radius: 10px; }
 
@@ -70,18 +68,9 @@ body, html {
   opacity: 0.7;
 }
 
-.floral-top-right {
-  top: -20px;
-  right: -20px;
-}
+.floral-top-right { top: -20px; right: -20px; }
+.floral-bottom-left { bottom: -20px; left: -20px; transform: rotate(180deg); }
 
-.floral-bottom-left {
-  bottom: -20px;
-  left: -20px;
-  transform: rotate(180deg);
-}
-
-/* Content Area */
 .content {
   position: relative;
   z-index: 10;
@@ -130,7 +119,17 @@ body, html {
     font-weight: 600;
 }
 
-/* Buttons Container */
+/* Styling for Phone Links */
+.call-link {
+    display: inline-block;
+    color: var(--accent-gold);
+    text-decoration: none;
+    font-weight: 600;
+    margin: 8px 0;
+    padding: 5px 10px;
+    border-bottom: 1px dashed var(--accent-gold);
+}
+
 .btn-container {
     display: flex;
     flex-direction: column;
@@ -153,15 +152,10 @@ body, html {
   text-decoration: none;
   font-weight: 600;
   border-radius: 6px;
-  display: inline-block;
 }
 
 .btn:active { transform: scale(0.98); }
-
-.btn:hover {
-  background: var(--text-dark);
-  color: white;
-}
+.btn:hover { background: var(--text-dark); color: white; }
 
 .btn-map {
     border-color: var(--accent-gold);
@@ -169,20 +163,14 @@ body, html {
     background: rgba(176, 141, 87, 0.05);
 }
 
-.btn-map:hover {
-    background: var(--accent-gold);
-    color: white;
-}
+.btn-map:hover { background: var(--accent-gold); color: white; }
 
-/* Smooth Fade Animation */
 .fade { transition: 0.4s opacity, 0.4s transform; }
 .fade-out { opacity: 0; transform: translateY(10px); }
 
-/* Landscape mode adjustments for mobile */
 @media (max-height: 500px) {
     .card { min-height: 90vh; padding: 1rem; }
     .retirement-label { margin-bottom: 0.5rem; font-size: 2.5rem; }
-    .btn-container { flex-direction: row; max-width: 100%; }
 }
 
 </style>
@@ -190,14 +178,9 @@ body, html {
 <body>
 
 <div class="card">
-  <!-- Top Right Floral Decoration -->
   <svg class="floral floral-top-right" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
     <path fill="#b08d57" fill-opacity="0.2" d="M100 0C120 40 180 20 200 60C180 100 200 160 160 180C120 200 40 180 20 140C0 100 40 80 100 0Z"/>
-    <circle fill="#b08d57" fill-opacity="0.3" cx="170" cy="50" r="15"/>
-    <circle fill="#b08d57" fill-opacity="0.1" cx="130" cy="30" r="25"/>
   </svg>
-
-  <!-- Bottom Left Floral Decoration -->
   <svg class="floral floral-bottom-left" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
     <path fill="#b08d57" fill-opacity="0.2" d="M100 0C120 40 180 20 200 60C180 100 200 160 160 180C120 200 40 180 20 140C0 100 40 80 100 0Z"/>
   </svg>
@@ -205,7 +188,6 @@ body, html {
   <div class="content">
     <div class="happy-label">Happy</div>
     <div class="retirement-label">Retirement</div>
-
     <div id="message-area">
       <p id="text" class="main-text fade">
         Celebrating the honorable career and retirement of <strong>Mr. Ashok Verma.</strong>
@@ -216,8 +198,7 @@ body, html {
   <div class="btn-container">
     <button class="btn" onclick="nextPage()">Next Detail</button>
     <a href="https://www.google.com/maps/search/?api=1&query=ABS+Banquet+Hall+SCO+958+Sector+70+Mohali" 
-       target="_blank" 
-       class="btn btn-map">📍 The Venue</a>
+       target="_blank" class="btn btn-map">📍 The Venue</a>
   </div>
 </div>
 
@@ -228,21 +209,16 @@ const pages = [
   { text: "Warmly invited by:<br><strong>Verma Family</strong>" },
   { text: "Celebrating on:<br><strong>Saturday, 02 MAY 2026</strong><br><strong>7:00 PM Onwards</strong>" },
   { text: "<strong>The Venue:</strong><br>ABS Banquet Hall<br>SCO 958 Sector 70, Mohali" },
-  { text: "Please join us for an evening of:<br><strong>Music, Dinner, and Fond Memories!</strong>" }
+  { text: "Please join us for an evening of:<br><strong>Music, Dinner, and Fond Memories!</strong>" },
+  { text: "<strong>Contact for RSVP:</strong><br><br>Sehdev Verma: <a href='tel:8708482957' class='call-link'>8708482957</a><br>Ashok Verma: <a href='tel:9466545653' class='call-link'>9466545653</a>" }
 ];
 
 function nextPage() {
   const textElement = document.getElementById("text");
-  
-  // Add fade out
   textElement.classList.add("fade-out");
-
   setTimeout(() => {
-    // Update content
     page = (page + 1) % pages.length;
     textElement.innerHTML = pages[page].text;
-    
-    // Remove fade out to trigger fade in
     textElement.classList.remove("fade-out");
   }, 400);
 }
