@@ -4,16 +4,15 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <title>Retirement Invitation | Mr. Ashok Verma</title>
-<!-- Elegant & Professional Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<!-- Elegant Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --police-blue: #1a3a5f;
-  --light-blue: #e3f2fd;
-  --accent-blue: #2196f3;
-  --white: #ffffff;
-  --card-shadow: 0 20px 50px rgba(0,0,0,0.2);
+  --bg-card: #fdfaf3; 
+  --text-dark: #2c2c2c;
+  --accent-gold: #b08d57;
+  --text-muted: #666;
 }
 
 * {
@@ -26,220 +25,175 @@ body, html {
   padding: 0;
   width: 100%;
   height: 100%;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
-  overflow: hidden; /* Prevent body scroll */
+  background-color: #f0f0f0;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-dark);
 }
 
-/* Background Pattern */
-.bg-pattern {
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background-image: radial-gradient(var(--accent-blue) 0.5px, transparent 0.5px);
-  background-size: 40px 40px;
-  opacity: 0.1;
-  z-index: 1;
-}
-
-/* Main Card Container */
+/* The Card Container */
 .card {
+  position: relative;
+  width: 95%;
+  max-width: 400px;
+  height: 650px;
+  background-color: var(--bg-card);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px 30px;
+  border-radius: 8px;
+}
+
+/* Elegant Botanical SVG Decorations */
+.floral {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.floral-top-right {
+  top: -30px;
+  right: -30px;
+}
+
+.floral-bottom-left {
+  bottom: -30px;
+  left: -30px;
+  transform: rotate(180deg);
+}
+
+/* Content Area */
+.content {
   position: relative;
   z-index: 10;
   width: 100%;
-  height: 100%; /* Mobile default */
-  max-width: 450px; /* Desktop width limit */
-  max-height: 850px; /* Desktop height limit */
-  background: var(--white);
-  display: flex;
-  flex-direction: column;
-  box-shadow: var(--card-shadow);
-  overflow: hidden;
-  transition: all 0.3s ease;
 }
 
-/* Desktop/Tablet Styling adjustments */
-@media (min-width: 480px) and (min-height: 600px) {
-  .card {
-    height: 92vh;
-    border-radius: 30px;
-    border: 4px solid var(--police-blue);
-  }
-}
-
-/* Blue Header Section */
-.card-header {
-  background: var(--police-blue);
-  flex: 0 0 35%;
-  min-height: 220px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  padding-bottom: 50px;
-  position: relative;
-}
-
-.card-body {
-  flex: 1;
-  background: white;
-  margin-top: -40px;
-  border-radius: 40px 40px 0 0;
-  position: relative;
-  text-align: center;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  overflow-y: auto; /* Handle overflow if text is long on small screens */
-}
-
-/* Inspector Cap SVG */
-.cap-icon {
-  width: clamp(70px, 15vw, 95px);
-  position: absolute;
-  top: -65px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 30;
-  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.4));
-}
-
-.photo-box {
-  position: relative;
-  display: inline-block;
-  margin-top: 20px;
-}
-
-.photo {
-  width: clamp(140px, 35vw, 180px);
-  height: clamp(140px, 35vw, 180px);
-  border-radius: 20px;
-  object-fit: cover;
-  border: 5px solid var(--white);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
-
-.badge-seal {
-    font-size: 11px;
-    color: var(--accent-blue);
-    font-weight: 600;
-    letter-spacing: 3px;
-    display: block;
-    margin: 10px 0;
-    text-transform: uppercase;
-}
-
-h1 {
+.happy-label {
   font-family: 'Playfair Display', serif;
-  color: var(--police-blue);
-  font-size: clamp(20px, 5vw, 26px);
-  margin: 5px 0;
+  font-size: 22px;
+  letter-spacing: 6px;
   text-transform: uppercase;
-  line-height: 1.2;
+  color: var(--accent-gold);
+  margin-bottom: 0;
+  font-weight: 700;
 }
 
-#content-area {
-  padding: 0 10px;
+.retirement-label {
+  font-family: 'Dancing Script', cursive;
+  font-size: 64px;
+  color: var(--text-dark);
+  margin-top: -12px;
+  margin-bottom: 35px;
 }
 
-p {
-  font-size: clamp(14px, 4vw, 16px);
-  line-height: 1.5;
-  color: #444;
-  margin: 10px 0;
+#message-area {
+  min-height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-text {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+.main-text strong {
+    color: var(--text-dark);
+    font-weight: 600;
 }
 
 /* Buttons Container */
 .btn-container {
-  padding: 15px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 40px;
+    width: 100%;
 }
 
-button {
-  width: 100%;
-  max-width: 280px;
-  padding: clamp(12px, 3vw, 16px);
-  border: none;
-  border-radius: 12px;
-  background: var(--police-blue);
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  margin: 6px auto;
-  font-size: 14px;
+.btn {
+  background: transparent;
+  border: 1px solid var(--text-dark);
+  padding: 12px 20px;
+  color: var(--text-dark);
   text-transform: uppercase;
-  display: block;
-  transition: transform 0.2s, background 0.2s;
-  box-shadow: 0 5px 15px rgba(26, 58, 95, 0.2);
+  letter-spacing: 2px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 4px;
 }
 
-button:active {
-  transform: scale(0.98);
+.btn:hover {
+  background: var(--text-dark);
+  color: white;
 }
 
-.location-btn {
-  background: white;
-  border: 2px solid var(--police-blue);
-  color: var(--police-blue);
+.btn-map {
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+    background: rgba(176, 141, 87, 0.05);
 }
 
-/* Canvas for Fireworks */
-#fireworks {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  pointer-events: none;
-  z-index: 5;
+.btn-map:hover {
+    background: var(--accent-gold);
+    color: white;
+    border-color: var(--accent-gold);
 }
 
-/* Animations */
-.fade-out { opacity: 0; transform: translateY(10px); transition: 0.3s; }
-.fade-in { opacity: 1; transform: translateY(0); transition: 0.3s; }
-
-/* Scrollbar Styling for Card Body */
-.card-body::-webkit-scrollbar { width: 4px; }
-.card-body::-webkit-scrollbar-thumb { background: #eee; border-radius: 10px; }
+/* Smooth Fade Animation */
+.fade { transition: 0.4s opacity, 0.4s transform; }
+.fade-out { opacity: 0; transform: translateY(10px); }
 
 </style>
 </head>
 <body>
 
-<div class="bg-pattern"></div>
-<canvas id="fireworks"></canvas>
-
-<!-- Subtle professional background music -->
-<audio id="music" src="https://cdn.pixabay.com/audio/2022/03/10/audio_c8c8a7315b.mp3" loop></audio>
-
 <div class="card">
-  <!-- Blue Upper Header -->
-  <div class="card-header">
-    <div class="photo-box">
-      <!-- Inspector Cap -->
-      <svg class="cap-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-          <path fill="#1a3a5f" d="M495.9 336.1c-12.7-53.1-60.7-94.6-114-110.1l-102.3-30c-15.1-4.4-31.1-4.4-46.2 0l-102.3 30c-53.3 15.5-101.3 57-114 110.1L0 411.3v20.7c0 17.7 14.3 32 32 32h448c17.7 0 32-14.3 32-32v-20.7l-16.1-75.2z"/>
-          <path fill="#2196f3" d="M256 176c-10.3 0-20.5 1.1-30.4 3.2L32 239.3v13.6c0 10 6.1 18.9 15.3 22.5l194.2 75.3c9.3 3.6 19.7 3.6 29 0l194.2-75.3c9.2-3.6 15.3-12.5 15.3-22.5v-13.6L286.4 179.2c-9.9-2.1-20.1-3.2-30.4-3.2z"/>
-          <circle fill="#FFD700" cx="256" cy="240" r="20"/>
-      </svg>
-      <img class="photo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPs03wdOM_auxjT0zsu-983uAmdoj_r4TePw&s" alt="Mr Ashok Verma">
-    </div>
-  </div>
+  <!-- Top Right Floral Decoration -->
+  <svg class="floral floral-top-right" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#b08d57" fill-opacity="0.2" d="M100 0C120 40 180 20 200 60C180 100 200 160 160 180C120 200 40 180 20 140C0 100 40 80 100 0Z"/>
+    <path fill="#8d6e63" fill-opacity="0.3" d="M150 20Q180 50 150 80T120 20Z"/>
+    <circle fill="#b08d57" fill-opacity="0.4" cx="170" cy="50" r="15"/>
+    <circle fill="#b08d57" fill-opacity="0.2" cx="130" cy="30" r="25"/>
+  </svg>
 
-  <div class="card-body">
-    <div>
-      <span class="badge-seal">Honor • Service • Integrity</span>
-      <div id="content-area">
-          <h1 id="title">Distinguished Service</h1>
-          <p id="text" style="
-    font-size: x-large">Celebrating the honorable career and retirement of <br><strong>Mr. Ashok Verma</strong></p>
-      </div>
+  <!-- Bottom Left Floral Decoration -->
+  <svg class="floral floral-bottom-left" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#b08d57" fill-opacity="0.2" d="M100 0C120 40 180 20 200 60C180 100 200 160 160 180C120 200 40 180 20 140C0 100 40 80 100 0Z"/>
+    <path fill="#8d6e63" fill-opacity="0.3" d="M150 20Q180 50 150 80T120 20Z"/>
+  </svg>
+
+  <div class="content">
+    <div class="happy-label">Happy</div>
+    <div class="retirement-label">Retirement</div>
+
+    <div id="message-area">
+      <p id="text" class="main-text fade">
+        Celebrating the honorable career and retirement of <strong>Mr. Ashok Verma.</strong>
+      </p>
     </div>
 
     <div class="btn-container">
-      <button onclick="nextPage()">Next Detail ✨</button>
-      <a href="https://maps.app.goo.gl/w1xFt3GhAfGgwEnv6" target="_blank" style="text-decoration: none;">
-        <button class="location-btn">📍 The Venue</button>
-      </a>
+        <button class="btn" onclick="nextPage()">Next Detail</button>
+        <a href="https://www.google.com/maps/search/?api=1&query=ABS+Banquet+Hall+SCO+958+Sector+70+Mohali" 
+           target="_blank" 
+           class="btn btn-map">📍 The Venue</a>
     </div>
   </div>
 </div>
@@ -247,86 +201,29 @@ button:active {
 <script>
 let page = 0;
 const pages = [
-  {title: "Distinguished Service", text: "Celebrating the honorable career and retirement of <br><strong>Mr. Ashok Verma</strong>"},
-  {title: "The Hosts", text: "Warmly invited by:<br>Verma Family"},
-  {title: "Date & Time", text: "Saturday, 02 MAY 2026 <br> 7:00 PM Onwards"},
-  {title: "The Venue", text: "ABS Banquet Hall<br>SCO 958 Sector 70, Mohali"},
-  {title: "A New Chapter", text: "Please join us for an evening of <br>Music, Dinner, and Fond Memories!"}
+  { text: "Celebrating the honorable career and retirement of.<br><br><strong>Mr. Ashok Verma</strong>" },
+  { text: "Warmly invited by:<br><strong>Verma Family</strong>" },
+  { text: "Celebrating on:<br><strong>Saturday, 02 MAY 2026</strong><br><strong>7:00 PM Onwards</strong>" },
+  { text: "<strong>The Venue:</strong><br>ABS Banquet Hall<br>SCO 958 Sector 70, Mohali" },
+  { text: "Please join us for an evening of :- <strong><br>Music, Dinner, and Fond Memories!" }
+ 
 ];
 
 function nextPage() {
-  const music = document.getElementById("music");
-  if(music.paused) music.play().catch(e => {});
-
-  launchBlueFireworks();
-
-  const container = document.getElementById("content-area");
-  container.classList.add("fade-out");
+  const textElement = document.getElementById("text");
+  
+  // Add fade out
+  textElement.classList.add("fade-out");
 
   setTimeout(() => {
+    // Update content
     page = (page + 1) % pages.length;
-    document.getElementById("title").innerHTML = pages[page].title;
-    document.getElementById("text").innerHTML = pages[page].text;
-    container.classList.remove("fade-out");
-    container.classList.add("fade-in");
-  }, 300);
+    textElement.innerHTML = pages[page].text;
+    
+    // Remove fade out to trigger fade in
+    textElement.classList.remove("fade-out");
+  }, 400);
 }
-
-// Optimized Canvas Fireworks
-const canvas = document.getElementById("fireworks");
-const ctx = canvas.getContext("2d");
-let particles = [];
-
-function resize() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-window.addEventListener('resize', resize);
-resize();
-
-class Particle {
-  constructor(x, y, color) {
-    this.x = x; this.y = y; this.color = color;
-    this.velocity = { x: (Math.random() - 0.5) * 6, y: (Math.random() - 0.5) * 6 };
-    this.alpha = 1;
-    this.friction = 0.96;
-  }
-  draw() {
-    ctx.save();
-    ctx.globalAlpha = this.alpha;
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
-    ctx.fillStyle = this.color;
-    ctx.fill();
-    ctx.restore();
-  }
-  update() {
-    this.velocity.x *= this.friction;
-    this.velocity.y *= this.friction;
-    this.x += this.velocity.x;
-    this.y += this.velocity.y;
-    this.alpha -= 0.015;
-  }
-}
-
-function launchBlueFireworks() {
-  const x = Math.random() * canvas.width;
-  const y = Math.random() * (canvas.height / 2.5);
-  const colors = ['#1a3a5f', '#2196f3', '#ffffff'];
-  for (let i = 0; i < 30; i++) {
-    particles.push(new Particle(x, y, colors[Math.floor(Math.random()*colors.length)]));
-  }
-}
-
-function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  particles.forEach((p, index) => {
-    if (p.alpha > 0) { p.update(); p.draw(); }
-    else { particles.splice(index, 1); }
-  });
-  requestAnimationFrame(animate);
-}
-animate();
 </script>
 
 </body>
